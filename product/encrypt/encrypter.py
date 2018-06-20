@@ -1,4 +1,3 @@
-import number_generator
 
 simple_test = "test"
 test_string = "This is my magical test string lest see if we can change this at all."
@@ -51,9 +50,6 @@ def encrypt(text, number, decrypt=False):
             end_string.append(chr(char_num))
 
 
-
-
-
     print("start string: {}\n"
           "end string: {}\n".format(text, ''.join(end_string)))
 
@@ -61,6 +57,12 @@ def encrypt(text, number, decrypt=False):
         print ("Start char: {}={} End char".format(text[x], end_string[x]))
 
     return end_string
+
+def handler(event, context):
+    """Handler for when deployed as a lambda function, this should be called
+     from aws when a text file is uploaded into s3 bucket"""
+    print("Event: {}\n Context: {}\n")
+
 
 
 # test when running python file as script
