@@ -3,7 +3,7 @@ import os
 
 BUCKET = "leo-magic-bucket"
 s3 = boto3.resource('s3')
-source_dir = "/home/leo/repos/aws-test-repo/product/files_to_upload/"
+source_dir = os.getcwd() + "/files_to_upload/"
 
 
 def upload_file(file):
