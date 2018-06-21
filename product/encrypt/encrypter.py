@@ -61,7 +61,10 @@ def encrypt(text, number, decrypt=False):
 def handler(event, context):
     """Handler for when deployed as a lambda function, this should be called
      from aws when a text file is uploaded into s3 bucket"""
-    print("Event: {}\n Context: {}\n")
+    print("Event: {}\n Context: {}\n".format(event, context))
+    print(event['Records'][0]['s3']['bucket'])
+    print(event['Records'][0]['s3']['bucket'])
+    print(event['Records'][0]['s3']['object'])
 
 
 
