@@ -10,7 +10,7 @@ def upload_file(file):
     """Upload a file to s3"""
     print("uploading {} to amazon S3".format(file))
     # Upload a file to s3 first param is source second is destination
-    s3.Bucket(BUCKET).upload_file(source_dir + file, file)
+    s3.Bucket(BUCKET).upload_file(source_dir + file, "file_dump/" + file)
     print("Done")
 
 
@@ -27,7 +27,7 @@ def list_files():
     """Return list of files in directory"""
     file_list = os.listdir(source_dir)
     print(file_list)
-    return file_list
+    return file_list[1]
 
 upload_all_files()
 
