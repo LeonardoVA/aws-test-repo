@@ -27,7 +27,7 @@ def list_files():
     """Return list of files in directory"""
     file_list = os.listdir(source_dir)
     print(file_list)
-    return file_list[1]
+    return [file_list[5]]
 
 upload_all_files()
 

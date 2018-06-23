@@ -1,9 +1,4 @@
 
-simple_test = "test"
-test_string = "This is my magical test string lest see if we can change this at all."
-test_string2 = "string string string string string string string"
-test_number = 99994321
-
 
 def encrypt(text, number, decrypt=False):
     """This function takes in a string and returns the encrypted string"""
@@ -41,12 +36,12 @@ def encrypt(text, number, decrypt=False):
             #decrypting
             print("Decrypting...")
             char_num = ord(char)
-            print("Mult: {}\nDivis: {}\nChar: {}\nOrd: {}\n".format(mult, divis, char, char_num))
+            print("Mult: {}\nDivis: {}\nChar: {}\nOrd: {}".format(mult, divis, char, char_num))
             # Change the char number inverse to before
             char_num = int(char_num / mult)
             print("char num {}".format(char_num))
             char_num -= (mult + divis)
-            print("char num {}".format(char_num))
+            print("char num {}\n".format(char_num))
             end_string.append(chr(char_num))
 
 
@@ -56,24 +51,9 @@ def encrypt(text, number, decrypt=False):
     for x in range(len(end_string)):
         print ("Start char: {}={} End char".format(text[x], end_string[x]))
 
-    return end_string
+    return ''.join(end_string)
 
-def handler(event, context):
-    """Handler for when deployed as a lambda function, this should be called
-     from aws when a text file is uploaded into s3 bucket"""
-    print("Event: {}\n Context: {}\n".format(event, context))
-    print(event['Records'][0]['s3']['bucket'])
-    print(event['Records'][0]['s3']['bucket'])
-    print(event['Records'][0]['s3']['object'])
+def test():
+    return "hello"
 
-
-
-# test when running python file as script
-if __name__ == '__main__':
-    print("Hello from encypter")
-    encrypted_test = encrypt(test_string, test_number)
-    decrypted_test = encrypt(encrypted_test, test_number, decrypt=True)
-    print("start string = {}\n".format(list(simple_test)))
-    print("Encrypted string = {}\n".format(encrypted_test))
-    print("Decrypted string = {}\n".format(decrypted_test))
 
