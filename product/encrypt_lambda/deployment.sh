@@ -10,6 +10,8 @@ mkdir deployment
 # Move the relevant files into setup directory
 echo "Moving lambda handler to deployment dir"
 cp encrypter.py deployment/
+cp encryption_lambda.py deployment/
+cp aws_functionality.py deployment/
 
 # Install requirements via pip into the deployment directory as required for aws lambda zips
 # -r gives pip a requirements file while -t gives it a target directory
