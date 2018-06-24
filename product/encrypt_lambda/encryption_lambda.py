@@ -52,7 +52,7 @@ def handler(event, context):
         # create key for encrypted file
         key = 'processed/' + s3_key.split('/')[1]
 
-        #decrypt testing
+        # Decrypt testing
         # decrypted_string = encrypter.encrypt(encrypted_string, 12345678, True)
         # print("decrypted string: {}".format(decrypted_string))
         # print("file string: {} ".format(file_string))
@@ -71,8 +71,16 @@ if __name__ == '__main__':
          'eventName': 'ObjectCreated:Put',
          'userIdentity': {'principalId': 'AYR5JY9HRPUX8'},
          'requestParameters': {'sourceIPAddress': '109.156.63.35'},
-         'responseElements': {'x-amz-request-id': '4F92851230D43C4E', 'x-amz-id-2': 'uq8c4LtBLTuB2oOmqk9zJSxE4biDSK0/2g6j6VbFyOnw/x2zjRsu2Fk7Fl9IoEyLjZpNVSK0wBs='},
-         's3': {'s3SchemaVersion': '1.0', 'configurationId': '6b38065f-6b9d-41d8-b1e1-d71a6fd0f5ba', 'bucket': {'name': 'leo-magic-bucket', 'ownerIdentity': {'principalId': 'AYR5JY9HRPUX8'}, 'arn': 'arn:aws:s3:::leo-magic-bucket'}, 'object': {'key': 'file_dump/text_file_6.txt', 'size': 70, 'eTag': '5f0e6a1a5f024e8dabd3a26af9a73fe9', 'sequencer': '005B2E3D2A344CAC75'}}}]}
-    handler(event,'')
-
-
+         'responseElements': {'x-amz-request-id': '4F92851230D43C4E',
+                              'x-amz-id-2': 'uq8c4LtBLTuB2oOmqk9zJSxE4biDSK0/2g6j6'
+                                            'VbFyOnw/x2zjRsu2Fk7Fl9IoEyLjZpNVSK0wBs='},
+         's3': {'s3SchemaVersion': '1.0',
+                'configurationId': '6b38065f-6b9d-41d8-b1e1-d71a6fd0f5ba',
+                'bucket': {'name': 'leo-magic-bucket',
+                           'ownerIdentity': {'principalId': 'AYR5JY9HRPUX8'},
+                           'arn': 'arn:aws:s3:::leo-magic-bucket'},
+                'object': {'key': 'file_dump/text_file_6.txt',
+                           'size': 70,
+                           'eTag': '5f0e6a1a5f024e8dabd3a26af9a73fe9',
+                           'sequencer': '005B2E3D2A344CAC75'}}}]}
+    handler(event, '')

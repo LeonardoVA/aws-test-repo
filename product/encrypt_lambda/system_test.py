@@ -2,6 +2,7 @@ import unittest
 import encrypter
 import aws_functionality as aws
 
+
 class TestSystem(unittest.TestCase):
     """Testing various full system scenarios"""
 
@@ -13,7 +14,6 @@ class TestSystem(unittest.TestCase):
         with open(file_path, 'rb') as file:
             string = file.read().decode('utf-8')
         return string
-
 
     def test_upload_encrypt_decrypt(self):
 
@@ -29,15 +29,13 @@ class TestSystem(unittest.TestCase):
 
         processed_file_str = aws.get_file_as_string('processed/text_file_1.txt')
 
-        #Currently the encrypt key used is 12345678 in the live lambdas this will change
+        # Currently the encrypt key used is 12345678 in the live lambdas this will change
         unencrypted_file_str = encrypter.encrypt(processed_file_str, 12345678, decrypt=True)
 
         print("Original str: {}\n"
               "processed str: {}\n"
               "Unencrypted str: {}".format(original_file_str,
                                            processed_file_str, unencrypted_file_str))
-
-
 
 
 if __name__ == '__main__':

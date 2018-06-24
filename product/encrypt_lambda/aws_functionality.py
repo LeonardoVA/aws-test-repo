@@ -17,6 +17,7 @@ def upload_file(file, dest):
     s3.Bucket(BUCKET).upload_file(source_dir + file, dest + file)
     print("Done")
 
+
 def upload_fileobj(fileobj, key):
     """Upload file object to s3"""
     print("uploading fileobj to {} in amazon S3".format(key))
@@ -50,12 +51,14 @@ def get_file_as_string(file_key):
     s3_file = get_file(file_key)
     return s3_file.get()["Body"].read().decode('utf-8')
 
+
 def get_size_of_file(file_name):
     """Get size of s3 file from aws"""
     files = s3.Bucket(BUCKET).objects.filter(Prefix=file_name, MaxKeys=1)
     for obj in files:
         return obj.size
     raise LookupError("Did not return any objects for key: {}".format(file_name))
+
 
 def check_file_exists(file_name):
     """Check item is in s3 returns True or False"""
@@ -64,6 +67,7 @@ def check_file_exists(file_name):
         if file.key == file_name:
             return True
     return False
+
 
 def wait_for_file(file_name, timeout=30, initial_delay=0):
     """Waits up to timeout for the file to exist"""
@@ -83,10 +87,6 @@ def wait_for_file(file_name, timeout=30, initial_delay=0):
                        "in: {} seconds".format(file_name, BUCKET, timeout))
 
 
-
-
-
-
 def get_lambda_memory(lambda_name):
     """Return memory set for lambda function"""
     response = awslambda.get_function(FunctionName=lambda_name)
@@ -97,10 +97,5 @@ def get_lambda_memory(lambda_name):
     return response['Configuration']['MemorySize']*MEGABYTE
 
 
-
 if __name__ == '__main__':
     upload_all_files()
-
-
-
-

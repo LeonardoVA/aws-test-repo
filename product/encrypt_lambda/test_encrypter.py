@@ -1,6 +1,7 @@
 import unittest
 import encrypter
 
+
 class TestEncrypter(unittest.TestCase):
     """Testing various scenarios of encrypt / decrypt
      ensuring the same string you started with once
@@ -9,7 +10,6 @@ class TestEncrypter(unittest.TestCase):
     def setUp(self):
         pass
 
-
     def encrypt_decrypt(self, string, number):
         """Functionality for testing encryption and decryption"""
         encrypt_string = encrypter.encrypt(string, number)
@@ -17,12 +17,10 @@ class TestEncrypter(unittest.TestCase):
         print("Testing string: {}\nNumber: {} ".format(string, number))
         self.assertEqual(string, decrypt_string)
 
-
     def test_basic_1(self):
         string = "test string"
         number = 12345431
         self.encrypt_decrypt(string, number)
-
 
     def test_basic_2(self):
         string = "test string 23"
@@ -40,9 +38,9 @@ class TestEncrypter(unittest.TestCase):
         self.encrypt_decrypt(string, number)
 
     def test_basic_5(self):
-        string = "NOW USING A SLIGHTLY more complicated string unlike the 1st, 2nd & 3rd strings, " \
-                 "this one is going to be a way longer string maybe even super long. 1234567890-=+_)" \
-                 "(**&^^^%$££!QWESAWEJQWE78QWE54321| 웃웃웃웃 ☼ ❤ "
+        string = "NOW USING A SLIGHTLY more complicated string unlike the 1st, 2nd & 3rd string" \
+                 "s, this one is going to be a way longer string maybe even super long. 1234567" \
+                 "890-=+_)(**&^^^%$££!QWESAWEJQWE78QWE54321| 웃웃웃웃 ☼ ❤ "
         number = 12344321
         self.encrypt_decrypt(string, number)
 
@@ -99,6 +97,7 @@ class TestEncrypter(unittest.TestCase):
             string = file.read().decode('utf-8')
         number = 12345678
         self.encrypt_decrypt(string, number)
+
 
 if __name__ == '__main__':
     unittest.main()

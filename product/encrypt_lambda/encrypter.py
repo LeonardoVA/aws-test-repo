@@ -21,7 +21,7 @@ def encrypt(text, number, decrypt=False):
             divis = num_list[7]
 
         if not decrypt:
-            #encrypt
+            # encrypt
             print("Encrypting...")
             char_num = ord(char)
             print("Mult: {}\nDivis: {}\nChar: {}\nOrd: {}\n".format(mult, divis, char, char_num))
@@ -33,7 +33,7 @@ def encrypt(text, number, decrypt=False):
             end_string.append(chr(char_num))
 
         else:
-            #decrypting
+            # decrypting
             print("Decrypting...")
             char_num = ord(char)
             print("Mult: {}\nDivis: {}\nChar: {}\nOrd: {}".format(mult, divis, char, char_num))
@@ -44,16 +44,10 @@ def encrypt(text, number, decrypt=False):
             print("char num {}\n".format(char_num))
             end_string.append(chr(char_num))
 
-
     print("start string: {}\n"
           "end string: {}\n".format(text, ''.join(end_string)))
 
     for x in range(len(end_string)):
-        print ("Start char: {}={} End char".format(text[x], end_string[x]))
+        print("Start char: {}={} End char".format(text[x], end_string[x]))
 
     return ''.join(end_string)
-
-def test():
-    return "hello"
-
-
