@@ -3,11 +3,35 @@ import time
 
 import boto3
 
-BUCKET = "leo-magic-bucket"
+BUCKET = 'leo-magic-bucket'
+sqs_name = 'encrypted-files'
 s3 = boto3.resource('s3')
+sqs = boto3.resource('sqs', region_name='eu-west-2')
 awslambda = boto3.client('lambda', region_name='eu-west-2')
-source_dir = os.getcwd() + "/files_to_upload/"
+source_dir = os.getcwd() + '/files_to_upload/'
 MEGABYTE = 1024 ** 2
+
+
+def read_sqs_msg():
+    """processes messages on the queue"""
+    queue = get_sqs_queue()
+    retrieved = []
+    for msg in queue.receive_messages():
+        print("msg recieved: {}".format(msg.body))
+        retrieved.append(msg.body)
+        msg.delete()
+    return retrieved
+
+
+def send_sqs_msg(message):
+    """sends message on sqs queue"""
+    queue = get_sqs_queue()
+    queue.send_message(MessageBody=message)
+
+
+def get_sqs_queue():
+    """returns sqs queue"""
+    return sqs.get_queue_by_name(QueueName=sqs_name)
 
 
 def upload_file(file, dest):
