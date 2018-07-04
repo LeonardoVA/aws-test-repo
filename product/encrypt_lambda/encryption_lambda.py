@@ -1,5 +1,6 @@
 import os
 import io
+import psutil
 
 import encrypter
 import aws_functionality as aws
@@ -7,6 +8,7 @@ import aws_functionality as aws
 
 def get_system_memory():
     mem_bytes = os.sysconf('SC_PAGE_SIZE') * os.sysconf('SC_PHYS_PAGES')
+    print(psutil.virtual_memory())
     return mem_bytes
 
 
@@ -51,11 +53,6 @@ def handler(event, context):
 
         # create key for encrypted file
         key = 'processed/' + s3_key.split('/')[1]
-
-        # Decrypt testing
-        # decrypted_string = encrypter.encrypt(encrypted_string, 12345678, True)
-        # print("decrypted string: {}".format(decrypted_string))
-        # print("file string: {} ".format(file_string))
 
         # upload
         aws.upload_fileobj(fileobj, key)

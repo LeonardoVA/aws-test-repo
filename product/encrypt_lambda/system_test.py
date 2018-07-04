@@ -20,14 +20,14 @@ class TestSystem(unittest.TestCase):
         # Read in original file contents to check against later
         original_file_str = self.local_file_as_string('files_to_upload/text_file_1.txt')
 
-        aws.upload_file('text_file_1.txt', 'file_dump/')
+        aws.upload_file('text_file_6.txt', 'file_dump/')
 
         # Wait for file to upload to s3 and the lambda to handle the request
         # and process the file once it has finished it should create an encrypted
         # version in processed dir
-        aws.wait_for_file('processed/text_file_1.txt')
+        aws.wait_for_file('processed/text_file_6.txt')
 
-        processed_file_str = aws.get_file_as_string('processed/text_file_1.txt')
+        processed_file_str = aws.get_file_as_string('processed/text_file_6.txt')
 
         # Currently the encrypt key used is 12345678 in the live lambdas this will change
         unencrypted_file_str = encrypter.encrypt(processed_file_str, 12345678, decrypt=True)
